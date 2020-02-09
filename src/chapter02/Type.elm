@@ -70,11 +70,10 @@ user2 = Guest
 message : UserAlt -> String
 message userType =
     case userType of
-        LoggedIn isAdmin name ->
-            if isAdmin then
-                hello En ++ ", " ++ name ++ "(Administrator)."
-            else
-                hello En ++ ", " ++ name ++ "."
+        LoggedIn True name ->
+            hello En ++ ", " ++ name ++ "(Administrator)."
+        LoggedIn False name ->
+            hello En ++ ", " ++ name ++ "."
         Guest ->
              "Please Login."
 

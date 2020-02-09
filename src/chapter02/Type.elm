@@ -37,3 +37,42 @@ type alias HasId a =
 -}
 type alias Article =
     HasId { title : String }
+
+{-|
+  ️ custom type.
+-}
+type Day = Mon | Tue | Wed | Thu | Fri | Sat | Sun
+
+firstDay : Day
+firstDay = Mon
+
+type Lang = En | Ja | Fr
+
+hello : Lang -> String
+hello lang =
+    case lang of
+        En -> "Hello"
+        Ja -> "こんにちは"
+        Fr -> "Bonjour"
+
+--hello En -- "Hello"
+
+type UserAlt
+    = LoggedIn String
+    | Guest
+
+user1 : UserAlt
+user1 = LoggedIn "Taro"
+
+user2 : UserAlt
+user2 = Guest
+
+message : UserAlt -> String
+message userType =
+    case userType of
+        LoggedIn name ->
+            hello En ++ ", " ++ name ++ "."
+        Guest ->
+             "Please Login."
+
+

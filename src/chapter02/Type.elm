@@ -58,11 +58,11 @@ hello lang =
 --hello En -- "Hello"
 
 type UserAlt
-    = LoggedIn String
+    = LoggedIn Bool String
     | Guest
 
 user1 : UserAlt
-user1 = LoggedIn "Taro"
+user1 = LoggedIn True "Taro"
 
 user2 : UserAlt
 user2 = Guest
@@ -70,8 +70,11 @@ user2 = Guest
 message : UserAlt -> String
 message userType =
     case userType of
-        LoggedIn name ->
-            hello En ++ ", " ++ name ++ "."
+        LoggedIn isAdmin name ->
+            if isAdmin then
+                hello En ++ ", " ++ name ++ "(Administrator)."
+            else
+                hello En ++ ", " ++ name ++ "."
         Guest ->
              "Please Login."
 

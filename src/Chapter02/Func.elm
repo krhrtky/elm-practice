@@ -6,11 +6,16 @@ module Chapter02.Func exposing (..)
 isNegative n = n < 0
 
 {-|
-    再帰関数.
+    再帰関数呼び出し.
 -}
-sumUntil : Int -> Int
 sumUntil n =
-    if n == 1 then
-        1
+    sumUntilHelper 0 n
+
+{-|
+    再帰関数本体.
+-}
+sumUntilHelper sum n =
+    if n == 0 then
+        sum
     else
-        n + sumUntil (n - 1)
+        sumUntilHelper (sum + n)(n - 1)

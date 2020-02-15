@@ -1,8 +1,25 @@
 module Chapter02.HTML exposing (..)
 
-import Html exposing (Html, a, text)
+import Html exposing (Html, a, text, div, h1, ul, li)
 import Html.Attributes exposing (href)
 
 main: Html msg
 main =
-    a [ href "https://elm-lang.org"] [ text "Elm"]
+    div [] [ header, content ]
+
+header :  Html msg
+header =
+    h1 [] [ text "Useful Links" ]
+
+
+content : Html msg
+content =
+    ul []
+        [ linkItem "https://elm-lang.org" "Homepage"
+        , linkItem "https://package.elm-lang.org" "Packages"
+        , linkItem "https://ellie-app.com" "Playground"
+        ]
+
+linkItem : String -> String -> Html msg
+linkItem url text_ =
+    li [] [ a [ href url ] [ text text_ ] ]
